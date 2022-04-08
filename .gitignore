@@ -1,2 +1,6 @@
 .vs/
 obj/
+.sln
+x64
+.vcxproj*
+
