@@ -1,7 +1,8 @@
 .vs/
 obj/
 bin/
+Debug/
 x64/
 .sln
 .vcxproj*
-
+.csproj.*
