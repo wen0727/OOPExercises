@@ -3,6 +3,6 @@ obj/
 bin/
 Debug/
 x64/
-.sln
-.vcxproj*
-.csproj.*
+*.sln
+*.vcxproj*
+*.csproj*
