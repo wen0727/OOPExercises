@@ -22,56 +22,50 @@ class HelloName {
     }
 }
 
-class Compare2Int { 
-    //static char EOS = '\0';     //C# does not have end of string '\0'
+class CInInteger {      //Re-useable
     //delimiter for operands
     static char SPACE = ' ';
     //Ascii value for numbers range from 48 to 57 . comparable with operators
-    static int MinHex = 48;    //Int32 MinHex = 0x30;  
-    static int MaxHex = 57;    //Int32 MaxHex = 0x39;    
-    
-    private int _X = 0;
-    private int _Y = 0;
-    private string? _INPUT = "";
-    private List<int> _OPERANDS = new List<int>(); //dynamic array
+    static int MinHex = 48;         //Int32 MinHex = 0x30;  
+    static int MaxHex = 57;         //Int32 MaxHex = 0x39;   
+    private string? _INPUT = "";    //Place holder for Console.ReadLine()
+    public List<int> _OPERANDS = new List<int>(); //dynamic array
 
-    public Compare2Int() { 
+    public CInInteger() {
         _INPUT = Console.ReadLine(); 
         if (_INPUT != null) {
-            fPhraseIntlist(_INPUT,_OPERANDS);   //assigning object to variable is similar to assgin object's pointer(address) to the variable.
-            _X = _OPERANDS[0];  
-            _Y = _OPERANDS[1];
+            fPhraseIntlist(_INPUT, _OPERANDS);   //assigning object to variable is similar to assgin object's pointer(address) to the variable.
         }
-            
     }
-    private int fSafeInt (string s) { 
-        int X = 0;
-        try { 
-            X = Int32.Parse(s);
-        }
-        catch (OverflowException){
-            Console.WriteLine("Exception:Parsed value > {0:E}.", int.MaxValue);
-        }
-        return X;
-    }
-    private List<int> fPhraseIntlist (string s, List<int> ops) { //when return a value compare to assignment 
+
+    private List<int> fPhraseIntlist(string s, List<int> ops) { 
         string? OPERAND = "";
-        for (int i = 0; i < s.Length; i++) { 
-            if (s[i]<=MaxHex && s[i]>=MinHex) { 
+        for (int i = 0; i < s.Length; i++) {
+            if (s[i] <= MaxHex && s[i] >= MinHex) {
                 OPERAND += s[i];
-                if (i == s.Length - 1) { 
-                    ops.Add(Int32.Parse(OPERAND));
+                if (i == s.Length - 1) {
                     //ops.Add(fSafeInt(OPERAND));
+                    ops.Add(Int32.Parse(OPERAND));
                 }
                 continue;
             }
-            if (s[i]==SPACE && OPERAND != "") {     //the condition allows multiple space
+            if (s[i] == SPACE && OPERAND != "") {     //the condition allows multiple space
                 ops.Add(Int32.Parse(OPERAND));
-                //ops.Add(fSafeInt(OPERAND));
-                OPERAND="";
-                }
-            }            
+                OPERAND = "";
+            }
+        }
         return ops;
+    }
+}
+
+class Compare2Int { 
+    private int _X = 0;
+    private int _Y = 0;
+    
+    public Compare2Int() { 
+        CInInteger cin = new CInInteger();
+        _X = cin._OPERANDS[0];
+        _Y = cin._OPERANDS[1];
     }
 
     public string fCompare() {
@@ -86,57 +80,15 @@ class Compare2Int {
 }
 
 class XplusYminusZ { 
-    //static char EOS = '\0';     //C# does not have end of string '\0'
-    //delimiter for operands
-    static char SPACE = ' ';
-    //Ascii value for numbers range from 48 to 57 . comparable with operators
-    static int MinHex = 48;    //Int32 MinHex = 0x30;  
-    static int MaxHex = 57;    //Int32 MaxHex = 0x39;    
-    
     private int _X = 0;
     private int _Y = 0;
     private int _Z = 0;
-    private string? _INPUT = "";
-    private List<int> _OPERANDS = new List<int>(); //dynamic array
 
-    public XplusYminusZ() { 
-        _INPUT = Console.ReadLine(); 
-        if (_INPUT != null) {
-            fPhraseIntlist(_INPUT,_OPERANDS);   //assigning object to variable is similar to assgin object's pointer(address) to the variable.
-            _X = _OPERANDS[0];  
-            _Y = _OPERANDS[1];
-            _Z = _OPERANDS[2];
-        }
-            
-    }
-    private int fSafeInt (string s) { 
-        int X = 0;
-        try { 
-            X = Int32.Parse(s);
-        }
-        catch (OverflowException){
-            Console.WriteLine("Exception:Parsed value > {0:E}.", int.MaxValue);
-        }
-        return X;
-    }
-    private List<int> fPhraseIntlist (string s, List<int> ops) { //when return a value compare to assignment 
-        string? OPERAND = "";
-        for (int i = 0; i < s.Length; i++) { 
-            if (s[i]<=MaxHex && s[i]>=MinHex) { 
-                OPERAND += s[i];
-                if (i == s.Length - 1) { 
-                    ops.Add(Int32.Parse(OPERAND));
-                    //ops.Add(fSafeInt(OPERAND));
-                }
-                continue;
-            }
-            if (s[i]==SPACE && OPERAND != "") {     //the condition allows multiple space
-                ops.Add(Int32.Parse(OPERAND));
-                //ops.Add(fSafeInt(OPERAND));
-                OPERAND="";
-                }
-            }            
-        return ops;
+    public XplusYminusZ() {
+        CInInteger cin = new CInInteger();
+        _X = cin._OPERANDS[0];  
+        _Y = cin._OPERANDS[1];
+        _Z = cin._OPERANDS[2];     
     }
 
     public int fXplusYminusZ() {
