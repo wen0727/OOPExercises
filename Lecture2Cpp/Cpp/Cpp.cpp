@@ -23,12 +23,11 @@ int fEvenSum(int n, int acc) {
 			acc += n;
 		} 
 		return fEvenSum(n - 1, acc);
-	} else if (n==0)
+	}
 	return acc;
 }
 
 void fPrimeFactorize(int x, int y) {
-	if (x >= y) {
 		if (x % y == 0) {
 			if (x == y) {
 				cout << y;
@@ -36,10 +35,11 @@ void fPrimeFactorize(int x, int y) {
 			else {
 				cout << y << " * ";
 				x /= y;
+				fPrimeFactorize(x, y);
 			}
+		} else {
+			fPrimeFactorize(x, y + 1);
 		}
-		fPrimeFactorize(x, y + 1);
-	}
 }
 
 double fLeibniz(int n, double acc) {
@@ -50,7 +50,7 @@ double fLeibniz(int n, double acc) {
 		else {
 			acc += -1.0 / (2 * n + 1);
 		}
-		fLeibniz(n - 1, acc);
+		return fLeibniz(n - 1, acc);
 	}
 	if (n == 0) {
 		acc += 1.0;
@@ -60,22 +60,22 @@ double fLeibniz(int n, double acc) {
 
 int main()
 {
-	//1. Gaussian Sum
+	////1. Gaussian Sum
 	//int n = 0;
 	//cin >> n;
 	//cout << fGaussian(n) <<endl;;
 	
-	//2. Eeven sum
+	////2. Eeven sum
 	//int m = 0;
 	//cin >> m;
 	//cout << fEvenSum(m,0);
 
-	//Prime Factorization.
+	////Prime Factorization.
 	//int z = 0;
 	//cin >> z;
-	//fPrimeFactorize(z,1);
+	//fPrimeFactorize(z,2);
 
-	//Approximimating pi, Leibiz formula
+	////Approximimating pi, Leibiz formula
 	int p = 0;
 	cin >> p;
 	cout << fLeibniz(p,0.0) << endl;
