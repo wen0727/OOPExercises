@@ -6,7 +6,7 @@
     static int MaxHex = 57;         //Int32 MaxHex = 0x39;   
     static int INDEX = 0;
     private string? _INPUT = "";    //Place holder for Console.ReadLine()
-    public List<int> _OPERANDS = new List<int>(); //dynamic array
+    private List<int> _OPERANDS = new List<int>(); //dynamic array
 
     public CInInteger() {
         _INPUT = Console.ReadLine();
@@ -83,14 +83,11 @@ class PrimeFactorization {
     }
 
     public void fPrimefactorize(int x, int y) {
-        if (x % y == 0)
-        {
-            if (x == y)
-            {
+        if (x % y == 0) {
+            if (x == y) {
                 Console.Write(y);
             }
-            else
-            {
+            else {
                 Console.Write("{0} * ", y);
                 x /= y;
                 fPrimefactorize(x, y);
@@ -149,18 +146,18 @@ class Program {
         //PrimeFactorization pf = new PrimeFactorization();
         //pf.fPrimefactorize(z, 2);
 
-        //4. Lebniz formula
+        ////4. Lebniz formula
         CInInteger cin = new CInInteger();
         int t = 0;
         t = cin.fCin();
         Console.WriteLine(t);
 
         Leibniz l = new Leibniz();
-        Console.WriteLine(l.fLeibniz(t,0.0));
-        //double acc = 3.333;
-        //int n = 1;
+        Console.WriteLine(l.fLeibniz(t, 0.0));
 
-     
-        //Console.WriteLine(n / acc);
+        ////Use of <FILENAME>.exe with arguments
+        //Console.ReadLine();
+        //Console.Write("{0}", args[0]);
+        //Console.Write("{0}", args[1]);
     }
 }
