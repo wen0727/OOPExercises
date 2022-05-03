@@ -3,7 +3,7 @@
 
 #include <iostream>
 using namespace std;
-
+//Gaussian sum
 int fGaussian(int n) {
 	int pivot = 0;
 	int X = n+1;
@@ -16,7 +16,7 @@ int fGaussian(int n) {
 	}
 	return X;
 }
-
+//Sum of even numbers from 0 to n
 int fEvenSum(int n, int acc) {	
 	if (n > 0) {
 		if (n % 2 == 0) {
@@ -26,7 +26,7 @@ int fEvenSum(int n, int acc) {
 	}
 	return acc;
 }
-
+//Prime factorization, more efficient algorithm exists such as no integer between 2 to square root n divides n
 void fPrimeFactorize(int x, int y) {
 		if (x % y == 0) {
 			if (x == y) {
@@ -41,7 +41,7 @@ void fPrimeFactorize(int x, int y) {
 			fPrimeFactorize(x, y + 1);
 		}
 }
-
+//Pi approximation from Leibniz.
 double fLeibniz(int n, double acc) {
 	if (n > 0) {
 		if (n % 2 == 0) {
@@ -75,7 +75,7 @@ int main()
 	//cin >> z;
 	//fPrimeFactorize(z,2);
 
-	////Approximimating pi, Leibiz formula
+	////Approximimating pi, Leibniz formula
 	int p = 0;
 	cin >> p;
 	cout << fLeibniz(p,0.0) << endl;
