@@ -2,15 +2,7 @@
 //
 
 #include <iostream>
-#include <stdio.h>
-#include <math.h>
-#define intDigitMax 10
-#define dataArrayMax 100            //store 100 ascii values 
-#define intAsciiArrayMax 32            //store 100 ascii values 
-#define space ' '
-#define linefeed '\n'
-#define ascii0 47
-#define ascii9 58
+#define arraySizeMax 100            //store 100 ascii values 
 using namespace std;
 
 struct Histogram {
@@ -18,11 +10,11 @@ struct Histogram {
     int _NDATA;
     int* _DATAS;
 };
-
+Histogram _HIST1;
 
 int main() {
 
-    Histogram _HIST1;
+//    Histogram _HIST1;
     int INDEXI = 0;
     int NUMBER;
     int MAXDATA=0;
@@ -34,8 +26,8 @@ int main() {
     //stdi -> _HIST1._NINTERVAL[_HIST1._NDATA]
     //int -> int
     //The loop can be make a function
-    _HIST1._DATAS = (int*)malloc(dataArrayMax * sizeof(int));
-    while (INDEXI < _HIST1._NDATA && scanf_s("%d", &NUMBER)) {                                                //scanf("%d", &VAR)    ==  int var; int* pvar; pvar=&VAR; *pvar = stdi 
+    _HIST1._DATAS = (int*)malloc(arraySizeMax * sizeof(int));
+    while (INDEXI < _HIST1._NDATA && scanf_s("%d", &NUMBER)) {                                                //scanf("%d", &VAR)    ==  int var; int* pvar; pvar=&VAR; *pvar = stdi , the function ends with enter
         if (NUMBER > MAXDATA) {
             MAXDATA = NUMBER;
         }
@@ -63,7 +55,6 @@ int main() {
         cout << INTERVARMIN << ": " << COUNT << endl;
     }
 }
-
 
     _HIST1._DATAS = NULL;
     free(_HIST1._DATAS);                                                                                        //free the CHAR ARRAY
